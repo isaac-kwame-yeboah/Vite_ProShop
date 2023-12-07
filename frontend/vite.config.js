@@ -11,7 +11,7 @@ export default defineConfig({
       // Backend API User End Point // 
       proxy:{
         "/api":{
-          target: "http://localhost:8500",
+          target: "http://localhost:9000",
           changeOrigin: true
         }
       }
