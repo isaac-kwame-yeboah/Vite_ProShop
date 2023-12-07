@@ -27,7 +27,7 @@
 
 9. Install React Toastify;
       npm i react-toastify
-
+ 
 10. npm i @paypal/react-paypal-js  => Install React Paypal
 
 
