@@ -1,0 +1,70 @@
+         //  Project Guide  // 
+             /*  Frontend Creation  */
+1. npx create-react-app my-app   || npx create-react-app@latest frontend
+
+2. $ ls -a  (List all git files in the frontend folder )
+   $ rm -fr .git  (Remove the hidden .git repository file)
+    Move the .gitignore file to the root folder 
+
+3. Initialize a Git Repository in the root folder 
+      git branch -M main  => Select branch 
+      git push -u origin main   => Push to Github 
+
+4. Install React Bootstrap, Bootstrap, React Icons
+  => npm i react-bootstrap bootstrap@5.1.3 react-icons  
+
+5. Bring in Bootstrap in index.js file 
+   => import "bootstrap/dist/css/bootstrap.min.css"; 
+
+6. Install React-Router-Dom
+  => npm i react-router-dom
+
+7. Install React Router Bootstrap 
+    => npm i react-router-bootstrap 
+
+8. Redux && Redux Toolkit :: 
+     npm install @reduxjs/toolkit react-redux 
+
+9. Install React Toastify;
+      npm i react-toastify
+
+10. npm i @paypal/react-paypal-js  => Install React Paypal
+
+
+     // Backend Introduction //  
+8. npm init  => Creaet a node modules folder
+
+9. npm i express => Installs express
+
+10. npm i -D nodemon concurrently  => Installs nodemon && concurrently package
+
+11. npm i -D dotenv  => Install dotenv
+
+12. npm i axios  => Install Axios
+
+13. npm i mongoose  => Install mongoose package
+
+14. npm i bcryptjs  => Install bcrypt package 
+
+15. npm i jsonwebtoken  => Install jsonwebtoken package 
+
+16. npm i cookie-parser  => Install cookie-parser package 
+
+17. developer.paypal.com/dashboard 
+        email: isaacyeboah.mi6@gmai.com
+        password: isaacpaypal2023
+
+      Bussiness Account : Get the money through the application  (sb-kf43vx20576777_api1.business.example.com )  
+
+      Personal Account : Is what you use to pay with           ( sb-xmxtj28495984@personal.example.com )  
+       Sandbox Texting: {
+                          email: sb-xmxtj28495984@personal.example.com
+                          password: 5kZ2NF^h
+                       }
+
+18.    email : sb-h4c0k28529233@personal.example.com 
+       password: t/En<0>4 
+
+
+
+       
