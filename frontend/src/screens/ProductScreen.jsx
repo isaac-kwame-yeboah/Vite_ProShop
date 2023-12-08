@@ -1,18 +1,28 @@
                         // Product Details Page || Show Individual Product // 
 
 import { useParams} from "react-router-dom";
-import products from "../products.js";
 import { Link } from "react-router-dom";
 import { Row, Col, Image, ListGroup, Card, Button } from "react-bootstrap";
 import Rating from "../components/Rating";
-
+import { useEffect, useState } from "react";
+import axios from "axios";
+ 
 
 
 const ProductScreen = () => {  
+                         // useState for products // 
+              const [product, setProduct] = useState([]);
+
                 // Get Id From Url // 
         const { id:productId } = useParams(); 
 
-    const product = products.find((p) => p._id === productId)
+        useEffect(() => {
+            const fetchProduct = async () => {
+              const {data} = await axios.get(`/api/products/${productId}`);
+                setProduct(data)
+            }
+            fetchProduct();
+                  }, [productId]);
 
       
      

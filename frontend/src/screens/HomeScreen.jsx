@@ -1,14 +1,24 @@
                         // Displays All Products On The Home Page // 
 
 import { Row, Col } from "react-bootstrap";
-import products from "../products.js";
 import Product from "../components/Product";
-
-
+import { useEffect, useState } from "react";
+import axios from "axios";
  
+
+
+
 const HomeScreen = () => {  
+                      // useState for products // 
+              const [products, setProducts] = useState([]);
 
-
+                  useEffect(() => {
+            const fetchProducts = async () => {
+              const {data} = await axios.get("/api/products");
+                setProducts(data)
+            }
+            fetchProducts();
+                  }, []);
 
   return (
       <>  
