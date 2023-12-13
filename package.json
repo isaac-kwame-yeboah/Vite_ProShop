@@ -23,13 +23,15 @@
   },
   "homepage": "https://github.com/isaac-kwame-yeboah/Vite_ProShop#readme",
   "dependencies": {
+    "@reduxjs/toolkit": "^2.0.1",
     "axios": "^1.6.2",
     "bcryptjs": "^2.4.3",
     "colors": "^1.4.0",
     "cookie-parser": "^1.4.6",
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.0.2"
+    "mongoose": "^8.0.2",
+    "react-redux": "^9.0.2"
   },
   "devDependencies": {
     "concurrently": "^8.2.2",

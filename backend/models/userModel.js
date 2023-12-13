@@ -2,7 +2,7 @@
          import mongoose from "mongoose";
 
          // Bring in bcrypt // 
-      import bcrypt from "bcryptjs"
+     import bcrypt from "bcryptjs";
    
   
   
@@ -39,33 +39,30 @@
               type: Date,
               default: Date.now,
             },
-  
       }); 
   
+               // Encrypt password using bcrypt //
+           userSchema.pre("save", async function (next){
+            if(!this.isModified("password")) {
+                next();
+            }
 
-             // Encrypt Password Using Bcrypt //  
-             userSchema.pre("save", async function (next){
-                   if(!this.isModified("password")) {
-                       next();
-                   }   
+            
+            // generate salt to hashed password using genSalt method //
+        const salt = await bcrypt.genSalt(10);
+
+                // hash password with salt //
+         this.password = await bcrypt.hash(this.password, salt)
+      })
+              
+          
+           // match user entered password to hashed password in database // 
+        userSchema.methods.matchPassword = async function(enteredPassword){
+          // compare plain text password to the hash password //  
+      return await bcrypt.compare(enteredPassword, this.password)
+    }
   
-                   // Generate Salt To Hashed Password Using GenSalt Method //  
-               const salt = await bcrypt.genSalt(10);
-  
-                       // hash password with salt // 
-                this.password = await bcrypt.hash(this.password, salt)
-             }) 
-  
-  
-             
-             // Match User Entered Password To Hashed Password In Database // 
-          userSchema.methods.matchPassword = async function(enteredPassword){
-                // Compare Plain Text Password To The Hash Password //  
-            return await bcrypt.compare(enteredPassword, this.password)
-          }
-  
-   
-  
+    
       const User = mongoose.model("User", userSchema); 
   
       export default User;

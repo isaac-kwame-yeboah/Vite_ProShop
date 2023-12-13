@@ -1,13 +1,16 @@
-import { Navbar, Nav, Container } from "react-bootstrap";
+import { Badge, Navbar, Nav, Container } from "react-bootstrap";
 import {FaShoppingCart, FaUser} from "react-icons/fa";
 import logo from "../assets/logo.png";
 // import { LinkContainer } from "react-bootstrap"; // NOTE: Vite.js does not support *LinkContainer* //
-
+import {useSelector} from "react-redux";
 
 
 
 const Header = () => { 
+          // Get CartItems from Cart State //
+    const { cartItems } = useSelector((state) => state.cart);
 
+        
 
   return (
        <> 
@@ -24,7 +27,15 @@ const Header = () => {
             <Navbar.Collapse id="basic-navbar-nav"> 
                 <Nav className="ms-auto"> 
 
-                <Nav.Link href="/cart" > <FaShoppingCart /> Cart </Nav.Link> 
+
+         <Nav.Link href="/cart" > <FaShoppingCart /> Cart 
+                      {/* Item Count In ShoppingCart */}
+          {cartItems.length > 0 && (
+            <Badge pill bg="success" style={{marginLeft: "5px"}} > 
+                 {cartItems.reduce((acc, c) => acc + c.qty, 0)}
+            </Badge>
+          )} 
+         </Nav.Link> 
           
                  <Nav.Link href="/login"> <FaUser /> Sign In  </Nav.Link>  
               
