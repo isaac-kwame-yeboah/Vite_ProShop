@@ -1,3 +1,6 @@
+                       // Endpoints to work with the backend //   
+
+
 import { PRODUCTS_URL } from "../constants"; 
 import { apiSlice } from "./apiSlice"; 
 
@@ -5,6 +8,7 @@ import { apiSlice } from "./apiSlice";
      // productApiSlice // 
 export const productsApiSlice = apiSlice.injectEndpoints({
     endpoints: (builder) => ({ 
+            // Get All Products // 
         getProducts: builder.query({
           query: () => ({
             url: PRODUCTS_URL,
@@ -12,7 +16,8 @@ export const productsApiSlice = apiSlice.injectEndpoints({
              keepUnusedDataFor: 5,
         }),
 
-
+             
+                // Get Product Details // 
         getProductDetails: builder.query({
             query: (productId) => ({
              url: `${PRODUCTS_URL}/${productId}`,
@@ -21,13 +26,22 @@ export const productsApiSlice = apiSlice.injectEndpoints({
            }),
 
 
+              // Create Product // 
+            createProduct: builder.mutation({
+              query: () => ({
+              url: PRODUCTS_URL, 
+              method: "POST",
+              }), 
+                 invalidatesTags:["Products"],
+            }) 
 
     }),
 }); 
 
 
-  export const {useGetProductsQuery,
-                useGetProductDetailsQuery,
+  export const { useGetProductsQuery,
+                 useGetProductDetailsQuery, 
+                 useCreateProductMutation,
                } = productsApiSlice;  
 
 

@@ -20,10 +20,13 @@ import connectDB from "./config/db.js";
 import productRoute from "./routes/productRoute.js"; 
 
    // Bring in userRoute //
-import userRoute from "./routes/userRoute.js";
+import userRoute from "./routes/userRoute.js"; 
+
+    // Bring in orderRoutes // 
+import orderRoute from "./routes/orderRoute.js";
 
  // Bring in errorMiddleware (Custom Error Handler) //  
- import { notFound, errorHandler } from "./middleware/errorMiddleware.js"
+import { notFound, errorHandler } from "./middleware/errorMiddleware.js"
 
 
 // Initialize express app //
@@ -47,21 +50,23 @@ connectDB();
       // Products Api EndPoint // 
      app.use("/api/products", productRoute);
       
-     // Users Api Route // 
+        // Users Api Route // 
      app.use("/api/users", userRoute);
 
-      // Bring in orderRoutes //
+      // Orders Api Route //
+     app.use("/api/orders", orderRoute);
 
+       // Paypal Api Route // 
+    app.get("/api/config/paypal", (req, res) => res.send({clientId: process.env.PAYPAL_CLIENT_ID})); 
 
-
-     
+    
       // use errorHandler middleware // 
     app.use(notFound);
     app.use(errorHandler); 
 
 // Set port // 
 const PORT = process.env.PORT || 9000
-
+ 
 // Start server // 
 app.listen(PORT, () => {
   console.log(`Server Started on port ${PORT}`.yellow.underline);

@@ -5,8 +5,10 @@ import express from "express";
 const router = express.Router();
 
 // Bring in product controller functions // 
-import { getProducts, getProductById,} from "../controllers/productController.js";
+import { getProducts, getProductById, createProduct } from "../controllers/productController.js";
 
+// Bring in protect && admin middleware // 
+import { protect, admin } from "../middleware/authMiddleware.js";
 
 
         // Get All Products // 
@@ -14,7 +16,9 @@ import { getProducts, getProductById,} from "../controllers/productController.js
 
       // Get Single Product // 
        router.get("/:id", getProductById);
-
+ 
+        // Create Product // 
+        router.post("/", protect, admin, createProduct);
  
   
 

@@ -33,7 +33,7 @@
 
      // Backend Introduction //  
 8. npm init  => Creaet a node modules folder
-
+ 
 9. npm i express => Installs express
 
 10. npm i -D nodemon concurrently  => Installs nodemon && concurrently package
@@ -62,8 +62,14 @@
                           password: 5kZ2NF^h
                        }
 
-18.    email : sb-h4c0k28529233@personal.example.com 
-       password: t/En<0>4 
+18.           // API credentials // 
+     https://developer.paypal.com/dashboard/applications/edit/SB:QVVyZjFxQUFpX0RhUG51UllYZlBjRGVfcDJfRDl0NHZsTXFfYVJPR0IzZnd1ZUFkdVdLYVFfVjROZDZVeEMwMTc4M0U2enlKLU54c1czOGk=
+
+19.    // PayPal Sandbox Testing Using Personal Account For Payment // 
+        email: sb-xmxtj28495984@personal.example.com  
+        password: 5kZ2NF^h
+       
+
 
 
 

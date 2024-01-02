@@ -1,4 +1,4 @@
-                        // Product Details Page || Show Individual Product // 
+                       // Product Details Page || Show Individual Product // 
 
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { Form, Row, Col, Image, ListGroup, Card, Button } from "react-bootstrap";

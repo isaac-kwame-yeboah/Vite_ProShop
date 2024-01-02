@@ -17,7 +17,7 @@ export const addDecimals = (num) => {
 
           // Calculate Total Price // 
     state.totalPrice = (
-      Number(state.itemsPrice) + 
+      Number(state.itemsPrice) +  
       Number(state.shippingPrice) + 
       Number(state.taxPrice)
     ).toFixed(2);

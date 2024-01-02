@@ -3,9 +3,9 @@ import {updateCart} from "../utils/cartUtils";
 
 
 
-    // InitialState // 
+    // InitialState &&  [Adding shippingAddress && Paypal to our InitialState] // 
    const initialState = localStorage.getItem("cart") ? 
-                        JSON.parse (localStorage.getItem("cart")) : {cartItems:[]};
+ JSON.parse (localStorage.getItem("cart")) : {cartItems:[], shippingAddress:{}, paymentMethod:"Paypal"};  
 
 
       // Create cartReducer State //  
@@ -39,9 +39,27 @@ import {updateCart} from "../utils/cartUtils";
               return updateCart(state);
           }, 
 
-        
+ 
+            // Save Shipping Address //
+          saveShippingAddress: (state, action) => {
+            state.shippingAddress = action.payload; 
+                 // update local storage // 
+            return updateCart(state);
+         }, 
 
 
+             // save Payment Method // 
+             savePaymentMethod: (state, action) => {
+              state.paymentMethod = action.payload; 
+              return updateCart(state);
+            },
+
+ 
+               //  clear CartItems // 
+            clearCartItems: (state) => {
+              state.cartItems = []; 
+              return updateCart(state);
+            }
 
 
 
@@ -49,5 +67,5 @@ import {updateCart} from "../utils/cartUtils";
     });
  
 
-    export const { addToCart, removeFromCart}  = cartSlice.actions;
+    export const { addToCart, removeFromCart, saveShippingAddress, savePaymentMethod, clearCartItems}  = cartSlice.actions;
     export default cartSlice.reducer;
