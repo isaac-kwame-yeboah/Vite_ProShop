@@ -5,7 +5,7 @@ import express from "express";
 const router = express.Router();
 
 // Bring in product controller functions // 
-import { getProducts, getProductById, createProduct } from "../controllers/productController.js";
+import { getProducts, getProductById, createProduct, updateProduct, deleteProduct, createProductReview } from "../controllers/productController.js";
 
 // Bring in protect && admin middleware // 
 import { protect, admin } from "../middleware/authMiddleware.js";
@@ -18,11 +18,16 @@ import { protect, admin } from "../middleware/authMiddleware.js";
        router.get("/:id", getProductById);
  
         // Create Product // 
-        router.post("/", protect, admin, createProduct);
- 
-  
+        router.post("/", protect, admin, createProduct); 
 
+         // Update Product // 
+         router.put("/:id", protect, admin, updateProduct);
  
+         // Delete Product // 
+         router.delete("/:id", protect, admin, deleteProduct);
+
+        // Create New Review // 
+        router.post("/:id/reviews", protect, createProductReview);
 
 
 export default router;

@@ -62,7 +62,7 @@ const OrderListScreen = () => {
                         <Button variant="light" className="btn-sm"> 
                            Details
                         </Button>
-                      </Nav.Link>
+                      </Nav.Link> 
                     </td>
 
                     </tr>

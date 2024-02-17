@@ -68,9 +68,10 @@
 19.    // PayPal Sandbox Testing Using Personal Account For Payment // 
         email: sb-xmxtj28495984@personal.example.com  
         password: 5kZ2NF^h
-       
+    
+
+20. npm i multer  => Install Multer Package
 
 
-
-
+           
        

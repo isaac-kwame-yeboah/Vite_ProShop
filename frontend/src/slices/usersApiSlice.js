@@ -45,8 +45,47 @@ export const usersApiSlice = apiSlice.injectEndpoints({
                })
            }),
 
+
+            // Get All Users (Admin Only) //
+            getUsers: builder.query({
+              query: () => ({
+               url: USERS_URL,
+               method: "GET",
+              }), 
+              providesTags: ["Users"],
+              keepUnusedDataFor: 5,
+            }),
+
  
-        
+            // Delete User (Admin Only) // 
+             deleteUser: builder.mutation({
+              query: (userId) => ({
+               url: `${USERS_URL}/${userId}`,
+               method: "DELETE",
+              }),
+
+             }), 
+
+
+              // Get User Details (Admin Only) // 
+               getUserDetails: builder.query({
+                  query: (userId) => ({
+                    url: `${USERS_URL}/${userId}`,
+                    method: "GET",
+                  }),
+                  keepUnusedDataFor: 5,
+               }),
+
+
+               // Update User (Admin Only) // 
+                updateUser: builder.mutation({
+                  query: (data) => ({
+                  url: `${USERS_URL}/${data.userId}`,
+                  method: "PUT", 
+                  body: data
+                  }),
+                  invalidatesTags: ["Users"],
+                }),
 
 
     }),
@@ -57,6 +96,10 @@ export const usersApiSlice = apiSlice.injectEndpoints({
                  useLogoutMutation,
                  useRegisterMutation,
                  useProfileMutation,
+                 useGetUsersQuery,
+                 useDeleteUserMutation,
+                 useGetUserDetailsQuery,
+                 useUpdateUserMutation,
                } = usersApiSlice; 
 
 

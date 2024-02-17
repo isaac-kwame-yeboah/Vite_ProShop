@@ -9,7 +9,9 @@
 
    export const ORDERS_URL = "/api/orders"; 
 
-   export const PAYPAL_URL = "/api/config/paypal";
+   export const PAYPAL_URL = "/api/config/paypal"; 
+
+   
 
 
   

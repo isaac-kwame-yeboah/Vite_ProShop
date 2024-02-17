@@ -1,8 +1,8 @@
-                       // Endpoints to work with the backend //   
-
+                       // Endpoints To Work With The Backend API //   
 
 import { PRODUCTS_URL } from "../constants"; 
-import { apiSlice } from "./apiSlice"; 
+import { apiSlice } from "./apiSlice";  
+
 
 
      // productApiSlice // 
@@ -14,6 +14,7 @@ export const productsApiSlice = apiSlice.injectEndpoints({
             url: PRODUCTS_URL,
           }),
              keepUnusedDataFor: 5,
+             providesTags: ["Products"],
         }),
 
              
@@ -32,22 +33,67 @@ export const productsApiSlice = apiSlice.injectEndpoints({
               url: PRODUCTS_URL, 
               method: "POST",
               }), 
-                 invalidatesTags:["Products"],
-            }) 
+                 invalidatesTags:["Product"],   // Get rid of cache product //
+            }), 
+
+
+             // Update Product // 
+            updateProduct: builder.mutation({
+               query: (data) => ({
+                url: `${PRODUCTS_URL}/${data.productId}`,
+                method: "PUT",
+                body: data,
+               }),
+               invalidatesTags:["Products"],    // Get rid of cache product //
+            }),
+
+
+              // Upload Product Image // 
+             uploadProductImage: builder.mutation({
+                query: (data) => ({
+                  url: "/api/upload",
+                  method: "POST",
+                  body: data,
+                }),
+             }),
+
+           
+               
+              // Delete Product // 
+              deleteProduct: builder.mutation({
+                query: (productId) => ({
+                url: `${PRODUCTS_URL}/${productId}`,
+                method: "DELETE",
+                }),
+              }),
+
+
+
+                // Create New Review // 
+               createReview: builder.mutation({
+                  query: (data) => ({
+                   url: `/api/products/${data.productId}/reviews`,
+                   method: "POST",
+                   body: data,
+                  }),
+                  invalidatesTags: ["Product"],
+               })
+
 
     }),
 }); 
 
-
   export const { useGetProductsQuery,
                  useGetProductDetailsQuery, 
                  useCreateProductMutation,
+                 useUpdateProductMutation,
+                 useUploadProductImageMutation,
+                 useDeleteProductMutation,
+                 useCreateReviewMutation,
                } = productsApiSlice;  
 
 
-
-
-
+ 
      /* 
      NOTE: PREFIX  getProducts as seen in export const to { useGetProductsQuery } = productsApiSlice; 
       when exporting it
